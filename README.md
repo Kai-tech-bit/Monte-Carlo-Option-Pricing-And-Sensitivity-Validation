@@ -41,13 +41,13 @@ The results directory name above matches the repository's current spelling.
 
 Under the risk-neutral measure,
 
-\[
+$$
 dS_t=(r-q)S_t\,dt+\sigma S_t\,dW_t.
-\]
+$$
 
 At simulated observation dates, the stock follows exact GBM transitions:
 
-\[
+$$
 S_{t+\Delta t}
 =
 S_t\exp\left[
@@ -55,7 +55,7 @@ S_t\exp\left[
 +\sigma\sqrt{\Delta t}\,Z
 \right],
 \qquad Z\sim N(0,1).
-\]
+$$
 
 Contract values are discounted expected payoffs under this model.
 
@@ -107,17 +107,17 @@ legs are not treated as independent samples.
 
 The discounted terminal stock is used as a control:
 
-\[
+$$
 X=e^{-rT}S_T,
 \qquad
 E[X]=S_0e^{-qT}.
-\]
+$$
 
 The adjusted payoff is
 
-\[
+$$
 Y^*=Y-\hat\beta(X-E[X]).
-\]
+$$
 
 The coefficient is fitted on a separate pilot sample. Pilot evaluations
 are recorded in the exported results.
