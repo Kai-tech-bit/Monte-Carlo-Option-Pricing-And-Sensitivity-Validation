@@ -47,15 +47,14 @@ dS_t=(r-q)S_t\,dt+\sigma S_t\,dW_t.
 
 At simulated observation dates, the stock follows exact GBM transitions:
 
-$$
+```math
 S_{t+\Delta t}
-=
-S_t\exp\left[
-(r-q-\tfrac12\sigma^2)\Delta t
+= S_t\exp\left[
+\left(r-q-\frac{1}{2}\sigma^2\right)\Delta t
 +\sigma\sqrt{\Delta t}\,Z
 \right],
 \qquad Z\sim N(0,1).
-$$
+```
 
 Contract values are discounted expected payoffs under this model.
 
