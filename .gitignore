@@ -1,0 +1,21 @@
+# Python and notebook caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Local environments and credentials
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Local archive-packaging directory
+results_packages/
+
+# Research plots, tables, and JSON records are intentionally NOT ignored.
