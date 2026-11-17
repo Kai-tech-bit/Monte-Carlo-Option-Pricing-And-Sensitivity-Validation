@@ -41,9 +41,9 @@ The results directory name above matches the repository's current spelling.
 
 Under the risk-neutral measure,
 
-$$
+```math
 dS_t=(r-q)S_t\,dt+\sigma S_t\,dW_t.
-$$
+```
 
 At simulated observation dates, the stock follows exact GBM transitions:
 
