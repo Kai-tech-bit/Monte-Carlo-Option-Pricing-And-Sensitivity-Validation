@@ -10,8 +10,9 @@ Asian options introduce averaging and geometric controls,
 American/Bermudan experiments introduce exercise-policy estimation,
 and barrier options introduce monitored path events.
 
-The repository contains the research notebook and a saved quick-mode results
-bundle with 24 figures, 27 CSV tables, configuration records, and checksums.
+The repository contains the research notebook, the written report, and a saved
+quick-mode results bundle with 24 figures, 27 CSV tables, configuration records,
+and checksums.
 
 ## Research questions
 
@@ -28,14 +29,14 @@ bundle with 24 figures, 27 CSV tables, configuration records, and checksums.
 
 ## Start here
 
+- [Written report (PDF)](REPORT.pdf)
 - [Research notebook](code/pricing_and_validation.ipynb)
-- [Saved results bundle](results/OPTION_PRICING_AND_SENSITVITY/)
-- [Figures](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_01_figures/)
-- [Numerical tables](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/)
-- [Run configuration](results/OPTION_PRICING_AND_SENSITVITY/configuration_snapshot.json)
-- [Recorded environment](results/OPTION_PRICING_AND_SENSITVITY/environment.json)
-
-The results directory name above matches the repository's current spelling.
+- [Saved results bundle](results/)
+- [Figures](results/Figures/)
+- [Numerical tables](results/Tables/)
+- [Run configuration](results/configuration_snapshot.json)
+- [Recorded environment](results/environment.json)
+- [File inventory](results/inventory.csv) and [SHA-256 checksums](results/SHA256SUMS.txt)
 
 ## Model and valuation conventions
 
@@ -106,17 +107,17 @@ legs are not treated as independent samples.
 
 The discounted terminal stock is used as a control:
 
-$$
+```math
 X=e^{-rT}S_T,
 \qquad
 E[X]=S_0e^{-qT}.
-$$
+```
 
 The adjusted payoff is
 
-$$
+```math
 Y^*=Y-\hat\beta(X-E[X]).
-$$
+```
 
 The coefficient is fitted on a separate pilot sample. Pilot evaluations
 are recorded in the exported results.
@@ -171,7 +172,7 @@ The committed results bundle records quick mode with seed `20261117`.
 | Nested barrier schedules | 12, 24, 48 and 96 intervals |
 
 The full configuration is available in
-[configuration_snapshot.json](results/OPTION_PRICING_AND_SENSITVITY/configuration_snapshot.json).
+[configuration_snapshot.json](results/configuration_snapshot.json).
 
 ## Results
 
@@ -196,7 +197,7 @@ The plain put's saved interval does not contain BSM. An individual
 interval miss is reported as a statistical outcome, not automatically
 classified as an implementation failure.
 
-[European comparison CSV](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/european_comparison.csv)
+[European comparison CSV](results/Tables/european_comparison.csv)
 
 ### Repeated-run convergence
 
@@ -215,9 +216,9 @@ The control has the lowest RMSE at each tested budget in this run.
 Coverage estimates are noisy with only 24 replications and do not
 establish universal 95% coverage.
 
-[Convergence table](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/convergence_summary.csv)
+[Convergence table](results/Tables/convergence_summary.csv)
 ·
-[Convergence and coverage figure](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_01_figures/convergence_and_coverage.png)
+[Convergence and coverage figure](results/Figures/convergence_and_coverage.png)
 
 ### European sensitivities
 
@@ -242,9 +243,9 @@ Greek units:
 Vega and rho per percentage point are the reported raw sensitivities
 divided by 100.
 
-[Greek spot-grid summary](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/greeks_spot_grid_summary.csv)
+[Greek spot-grid summary](results/Tables/greeks_spot_grid_summary.csv)
 ·
-[Bump sensitivity table](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/greek_bump_sensitivity.csv)
+[Bump sensitivity table](results/Tables/greek_bump_sensitivity.csv)
 
 ### Arithmetic Asian options
 
@@ -259,9 +260,9 @@ in these baseline experiments.
 The geometric analytical price benchmarks the control contract.
 It is not an analytical benchmark for the arithmetic Asian payoff.
 
-[Asian comparison CSV](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/asian_comparison.csv)
+[Asian comparison CSV](results/Tables/asian_comparison.csv)
 ·
-[Asian intervals figure](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_01_figures/asian_intervals.png)
+[Asian intervals figure](results/Figures/asian_intervals.png)
 
 ### American/Bermudan exercise experiments
 
@@ -283,9 +284,9 @@ that the learned exercise decisions are optimal. This case is retained
 as a diagnostic finding, not presented as successful recovery of the
 optimal exercise policy.
 
-[Policy comparison](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/american_policy_comparison.csv)
+[Policy comparison](results/Tables/american_policy_comparison.csv)
 ·
-[Policy benchmark figure](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_01_figures/american_policy_benchmarks.png)
+[Policy benchmark figure](results/Figures/american_policy_benchmarks.png)
 
 ### Discretely monitored barrier options
 
@@ -314,9 +315,9 @@ Observation frequency experiments use nested schedules on common paths.
 They compare different monitored contracts; they are not independently
 benchmarked continuous-barrier prices.
 
-[Barrier price table](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/barrier_price_comparison.csv)
+[Barrier price table](results/Tables/barrier_price_comparison.csv)
 ·
-[Barrier monitoring figure](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_01_figures/barrier_monitoring_sensitivity.png)
+[Barrier monitoring figure](results/Figures/barrier_monitoring_sensitivity.png)
 
 ## Validation evidence
 
@@ -347,8 +348,8 @@ These checks establish specific implementation properties. They do not
 constitute independent model certification, a complete audit, or proof
 that every learned exercise policy is optimal.
 
-- [General checks](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/validation_checks.csv)
-- [Barrier checks](results/OPTION_PRICING_AND_SENSITVITY/artifacts/source_02_tables/barrier_validation_checks.csv)
+- [General checks](results/Tables/validation_checks.csv)
+- [Barrier checks](results/Tables/barrier_validation_checks.csv)
 
 ## Running the study
 
@@ -383,8 +384,8 @@ adjusts only for a folder named `notebooks`, not `code`. Setting
 when launching from the code directory.
 
 Raw exports are written under `PROJECT_ROOT/results/figures/` and
-`PROJECT_ROOT/results/tables/`. The committed bundle is a separate saved
-snapshot of those exports.
+`PROJECT_ROOT/results/tables/`. The committed `results/Figures/` and
+`results/Tables/` folders are a separate saved snapshot of those exports.
 
 Use clean export directories for a new run so the packaging step does
 not collect stale files.
@@ -397,19 +398,17 @@ market-data credentials or an external price CSV.
 ```text
 .
 ├── README.md
-├── .gitignore
+├── REPORT.pdf
 ├── code/
 │   └── pricing_and_validation.ipynb
 └── results/
-    └── OPTION_PRICING_AND_SENSITVITY/
-        ├── artifacts/
-        │   ├── source_01_figures/
-        │   └── source_02_tables/
-        ├── configuration_snapshot.json
-        ├── environment.json
-        ├── inventory.csv
-        ├── README.md
-        └── SHA256SUMS.txt
+    ├── Figures/
+    ├── Tables/
+    ├── README.md
+    ├── configuration_snapshot.json
+    ├── environment.json
+    ├── inventory.csv
+    └── SHA256SUMS.txt
 ```
 
 The layout above shows the principal research deliverables. Any retained
