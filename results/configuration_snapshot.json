@@ -1,0 +1,59 @@
+{
+  "MODE": "quick",
+  "BASE": {
+    "spot": 100.0,
+    "strike": 100.0,
+    "rate": 0.05,
+    "dividend": 0.0,
+    "vol": 0.2,
+    "maturity": 1.0,
+    "kind": "call"
+  },
+  "CFG": {
+    "seed": 20261117,
+    "n": 20000,
+    "pilot": 4000,
+    "repeats": 24,
+    "convergence_n": [
+      1000,
+      4000,
+      16000
+    ],
+    "greek_n": 40000,
+    "asian_n": 12000,
+    "asian_pilot": 3000,
+    "monitoring": 52,
+    "american": {
+      "train_paths": 15000,
+      "evaluation_paths": 20000,
+      "exercise_steps": 50,
+      "degree": 2,
+      "tree_substeps": 4,
+      "min_regression": 30
+    },
+    "barrier": {
+      "paths": 20000,
+      "monitoring_steps": 96,
+      "monitoring_grids": [
+        12,
+        24,
+        48,
+        96
+      ],
+      "spot_grid_points": 13,
+      "display_paths": 24
+    }
+  },
+  "BARRIER_CFG": {
+    "paths": 20000,
+    "monitoring_steps": 96,
+    "monitoring_grids": [
+      12,
+      24,
+      48,
+      96
+    ],
+    "spot_grid_points": 13,
+    "display_paths": 24
+  }
+}
